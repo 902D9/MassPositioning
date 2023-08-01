@@ -23,3 +23,13 @@ Content/Developers/
 Plugins/Developer/
 Content/__ExternalActors__/Developers/
 Content/__ExternalObjects__/Developers/
+
+# AnimToTexture stuff
+Content/AnimToTexture
+
+# ThirdPerson stuff
+Content/Characters
+Content/LevelPrototyping
+Content/ThirdPerson
+Content/__ExternalActors__/ThirdPerson
+Content/__ExternalObjects__/ThirdPerson
