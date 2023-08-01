@@ -75,6 +75,7 @@ protected:
 	                                   FMassSpawnDataGenerator* FinishedGenerator);
 
 public:
+	TMap<FString, FVector> GetPositioningPoints() { return PositioningPoints; }
 	TMap<FString, FVector> GetNewPersonWaitingForMassToSpawn() { return NewPersonWaitingForMassToSpawn; }
 	TMap<FString, FPersonDataFragment> GetPersonData() { return PersonData; }
 };
