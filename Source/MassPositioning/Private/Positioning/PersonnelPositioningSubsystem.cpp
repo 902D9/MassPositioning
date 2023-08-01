@@ -19,9 +19,9 @@ void UPersonnelPositioningSubsystem::Initialize(FSubsystemCollectionBase& Collec
 
 void UPersonnelPositioningSubsystem::Deinitialize()
 {
-	Super::Deinitialize();
+	// ClearPerson(); // 不调用
 	
-	// ClearPerson(); 无需调用
+	Super::Deinitialize();
 }
 
 void UPersonnelPositioningSubsystem::StartPersonnelPositioningSimulation(TMap<FString, FVector> InPositioningPoints,

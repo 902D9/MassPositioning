@@ -44,6 +44,8 @@ public class MassPositioning : ModuleRules
 
 			// Misc
 			"StructUtils",
+			
+			"NavigationSystem"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
