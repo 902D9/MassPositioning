@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MassObserverProcessor.h"
 #include "MassUpdateISMProcessor.h"
 #include "ISMVertexAnimationProcessor.generated.h"
 
@@ -15,9 +16,9 @@ struct MASSPOSITIONING_API FCrowdAnimationFragment : public FMassFragment
 	GENERATED_BODY()
 
 	TWeakObjectPtr<UAnimToTextureDataAsset> AnimToTextureData;
-	float GlobalStartTime = 0.0f;
+	float TimeOffset = 0.0f;
 	float PlayRate = 1.0f;
-	int32 AnimationStateIndex = 0;
+	int32 AnimationIndex = 0;
 	bool bSwappedThisFrame = false;
 };
 
@@ -47,6 +48,9 @@ protected:
 	virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
 };
 
+/**
+ * 根据速度选择 AnimationData.AnimationIndex
+ */
 UCLASS()
 class MASSPOSITIONING_API UMassProcessor_Animation : public UMassProcessor
 {
@@ -77,4 +81,22 @@ private:
 	void UpdateVertexAnimationState(FMassEntityManager& EntityManager, FMassExecutionContext& Context,
 	                                float GlobalTime);
 	// void UpdateSkeletalAnimation(FMassEntityManager& EntityManager, float GlobalTime, TArrayView<FMassEntityHandle> ActorEntities);
+};
+
+UCLASS()
+class MASSPOSITIONING_API UCrowdAnimationFragmentInitializer : public UMassObserverProcessor
+{
+	GENERATED_BODY()
+	
+public:
+	UCrowdAnimationFragmentInitializer();	
+
+protected:
+	virtual void ConfigureQueries() override;
+	virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
+	
+	FMassEntityQuery EntityQuery;
+
+	
+	UAnimToTextureDataAsset* GetAnimToTextureDataAsset(TSoftObjectPtr<UAnimToTextureDataAsset> SoftPtr);
 };
