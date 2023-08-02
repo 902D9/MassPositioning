@@ -43,8 +43,8 @@ public class MassPositioning : ModuleRules
 			"SmartObjectsModule", // work around until we find a better way to get data from smart object configs
 
 			// Misc
+			"AnimToTexture",
 			"StructUtils",
-			
 			"NavigationSystem"
 		});
 
